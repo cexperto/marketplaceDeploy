@@ -12,9 +12,9 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^users', views.UsersList.as_view()),
-    url(r'^categories/', views.CategoriesList.as_view()),
-    url(r'^products/', views.ProductsList.as_view()),
-    url(r'^cp/', views.CPList.as_view()),
+    url(r'^categories', views.CategoriesList.as_view()),
+    url(r'^products', views.ProductsList.as_view()),
+    url(r'^cp', views.CPList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

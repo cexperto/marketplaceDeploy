@@ -39,7 +39,7 @@ class CategoriesList(APIView):
         if name_c.is_valid():
             name_c.save()
         return Response(name_c,status=status.HTTP_201_CREATED)
-
+        
 
 class ProductsList(APIView):
     def get(self,request):
