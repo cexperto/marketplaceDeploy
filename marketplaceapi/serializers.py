@@ -23,3 +23,19 @@ class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
         fields = ('id_p','name_p','description_p','price','sku','stock','able')
+
+class CPSerializer(serializers.ModelSerializer):    
+
+
+    class Meta:
+        model = Products
+        exclude = ('able')
+    
+    
+    def to_representation(self, instance):
+        return {
+            'id':instance.id_p,
+            'name':instance.name_p,
+            'description':instance.description_p,
+            'category': instance.category_fk.name_c
+        }
