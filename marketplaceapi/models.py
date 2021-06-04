@@ -20,8 +20,8 @@ class Categorys(models.Model):
     class Meta:
         managed = False
         db_table = 'categorys'
-    # def __str__(self):
-    #     return self.id_c
+    def __str__(self):
+        return self.name_c
 
 
 class Images(models.Model):
@@ -83,8 +83,8 @@ class Users(models.Model):
         managed = False
         db_table = 'users'
     
-    def __str__(self):
-        return self.id_u
+    # def __str__(self):
+    #     return self.id_u
 
 
 class UsersProducts(models.Model):
