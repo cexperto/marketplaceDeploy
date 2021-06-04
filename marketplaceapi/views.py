@@ -6,14 +6,20 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Products, Users, Categorys
-from .serializers import CategorysSerializer, ProductsSerializer, UsersSerializer
+from .serializers import CategorysSerializer, ProductsSerializer, UsersSerializer, CPSerializer
 
 from django.core.serializers.json import DjangoJSONEncoder
 
 
 
 # Create your views here.
-class UserList(APIView):
+
+def index(request):
+    return HttpResponse('<h1>martketplace api</h1>')
+
+
+
+class UsersList(APIView):
     def get(self, request):
         users = Users.objects.all()
         serializer = UsersSerializer(users, many=True)
@@ -21,7 +27,13 @@ class UserList(APIView):
     # return HttpResponse('Working')
 
 
-class CategoryList(APIView):
+
+class CategoriesList(APIView):
+    def get(self,request):
+        categories = Categorys.objects.all()
+        serializer = CategorysSerializer(categories, many=True)
+        return Response(serializer.data)
+
     def post(self,request):
         name_c = CategorysSerializer(data=request.data)        
         if name_c.is_valid():
@@ -34,4 +46,15 @@ class ProductsList(APIView):
         products = Products.objects.all()
         serializer = ProductsSerializer(products,many=True)
         return Response(serializer.data)
+    def post(self,request):
+            return Response(request.data)
+
+
+
+class CPList(APIView):
+    def get(self, request):
+        return HttpResponse('<h1>working</h1>')
+        # serializer_class = CPList
+        # return Response(serializer_class)
+
 
